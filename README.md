@@ -5,11 +5,17 @@
 [![Actions Status](https://github.com/hofbi/vibromaf/workflows/CodeQL/badge.svg)](https://github.com/hofbi/vibromaf)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
+[![PyPI](https://img.shields.io/pypi/v/vibromaf)](https://pypi.org/project/vibromaf/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/vibromaf)](https://pypi.org/project/vibromaf/)
+[![PyPI - License](https://img.shields.io/pypi/l/vibromaf)](https://pypi.org/project/vibromaf/)
+
 ## Vibrotactile Quality Metrics
 
 This package provides implementations of existing vibrotactile quality metrics and machine learning approach that fuses the individual metric scores into a single final quality score.
 
 ## Installation
+
+Install `vibromaf` from [PyPI](https://pypi.org/project/vibromaf):
 
 ```shell
 pip install vibromaf
@@ -19,7 +25,7 @@ For development versions and alternative installations see the [installation doc
 
 ## Usage
 
-* [Get Started](https://hofbi.github.io/vibromaf/get-started)
+* [Get Started](https://hofbi.github.io/vibromaf/get-started/)
 * [Full Documentation](https://hofbi.github.io/vibromaf/)
 
 ## Citation
