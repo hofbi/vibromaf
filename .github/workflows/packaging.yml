@@ -23,6 +23,6 @@ jobs:
         make check_dist
     - name: Publish Package
       uses: pypa/gh-action-pypi-publish@release/v1
-      with: # TODO
+      with:
         user: __token__
         password: ${{ secrets.PYPI_API_TOKEN }}

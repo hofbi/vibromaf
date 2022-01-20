@@ -15,6 +15,8 @@ This package provides implementations of existing vibrotactile quality metrics a
 pip install vibromaf
 ```
 
+For development versions and alternative installations see the [installation documentation](https://hofbi.github.io/vibromaf/installation/).
+
 ## Usage
 
 * [Get Started](https://hofbi.github.io/vibromaf/get-started)

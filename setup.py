@@ -11,7 +11,7 @@ REQUIREMENTS = ROOT_DIR / "requirements.txt"
 
 setuptools.setup(
     name="vibromaf",
-    version="0.0.1",
+    version="0.0.2",
     author="Markus Hofbauer, Andreas Noll",
     author_email="name.surname@tum.de",
     description="Vibrotactile quality metrics and metric fusion",
@@ -32,7 +32,6 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Intended Audience :: Developers",
-        "Topic :: Multimedia :: Haptics",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
