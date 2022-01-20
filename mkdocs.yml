@@ -1,0 +1,28 @@
+site_name: VibroMAF
+site_description: "Vibrotactile Multi-Method Assessment Fusion"
+repo_url: https://github.com/hofbi/vibromaf
+edit_uri: edit/main/docs/
+theme: readthedocs
+nav:
+  - General:
+    - Home: README.md
+    - Installation: installation.md
+    - 'Get Started': get-started.md
+  - Metrics:
+    - SNR: metrics/snr.md
+    - SPQI: metrics/spqi.md
+    - ST-SIM: metrics/stsim.md
+    - VibroMAF: metrics/vibromaf.md
+  - Reference:
+    - API Reference: reference.md
+    - Changelog: CHANGELOG.md
+  - Development:
+    - Contribute: CONTRIBUTING.md
+    - 'Issue Tracker': 'https://github.com/hofbi/vibromaf/issues'
+    -  Discussions: 'https://github.com/hofbi/vibromaf/discussions'
+    - 'Code Coverage': 'https://hofbi.github.io/vibromaf/coverage'
+  - About:
+    - License: LICENSE.md
+plugins:
+  - search
+  - mkdocstrings

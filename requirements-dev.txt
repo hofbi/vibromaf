@@ -1,0 +1,12 @@
+-r requirements.txt
+
+build
+twine
+pre-commit
+coverage
+pyfakefs
+jupyter
+matplotlib
+tikzplotlib
+mkdocs
+mkdocstrings
