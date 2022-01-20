@@ -33,7 +33,7 @@ class SNRTest(unittest.TestCase):
 
         result = snr(sample_distorted_signal, sample_reference_signal)
 
-        self.assertAlmostEqual(60, result, delta=0.5)
+        self.assertAlmostEqual(60, result, delta=1.0)
 
     def test_nsnr__snr_larger_than_max__should_be_1(self):
         signal = np.array([0, 1])
