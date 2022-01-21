@@ -40,7 +40,10 @@ setuptools.setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
     ],
-    package_dir={"": "vibromaf"},
-    packages=setuptools.find_packages(where="vibromaf"),
+    package_data={
+        "models": ["model/*"],
+    },
+    packages=setuptools.find_packages(include=["vibromaf.*"]),
+    py_modules=["vibromaf.*"],
     python_requires=">=3.7",
 )

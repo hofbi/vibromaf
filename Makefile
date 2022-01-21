@@ -1,11 +1,3 @@
-file_finder = find . -type f \( $(1) \) -not \( -path '*/venv/*' -o -path '*/build/*' -o -path './paper/figures/*' \)
-
-ROOT_DIR = $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-CRUFT_DIR = $(ROOT_DIR)/paper/build/format
-LATEX_SETTINGS = $(ROOT_DIR)/paper/.latexindentrc.yaml
-
-LATEX_FILES = $(shell $(call file_finder,-name "*.tex"))
-
 .PHONY: test
 test:
 	python3 -m unittest discover
@@ -18,12 +10,8 @@ coverage_reports: coverage
 	coverage xml
 	coverage html
 
-latexindent:
-	mkdir -p $(CRUFT_DIR)
-	@for src in $(LATEX_FILES); do \
-		echo "-- Formatting LaTeX file $$src" && \
-		latexindent -w -m -s --cruft=$(CRUFT_DIR) --local=$(LATEX_SETTINGS) $$src; \
-	done
+pages: docs coverage_reports
+	cp -r htmlcov site
 
 serve_docs:
 	mkdocs serve
@@ -38,6 +26,8 @@ package:
 check_dist:
 	twine check --strict dist/*
 
-# TODO we first need to create an accout here
 deploy: package check_dist
 	python3 -m twine upload dist/*
+
+clean:
+	rm -rf site htmlcov dist vibromaf.egg-info
