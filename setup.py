@@ -11,7 +11,7 @@ REQUIREMENTS = ROOT_DIR / "requirements.txt"
 
 setuptools.setup(
     name="vibromaf",
-    version="0.0.3",
+    version="0.0.5",
     author="Markus Hofbauer, Andreas Noll",
     author_email="name.surname@tum.de",
     description="Vibrotactile quality metrics and metric fusion",
