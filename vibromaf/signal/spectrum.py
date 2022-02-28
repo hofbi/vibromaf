@@ -36,9 +36,11 @@ def signal_energy(signal: np.array) -> np.array:
 def compute_normalized_spectral_difference(
     reference_spectrum: np.array, distorted_spectrum: np.array
 ) -> np.array:
-    """Compute the normalized difference of two spectrums"""
-    difference = np.sum(np.abs(db2pow(reference_spectrum) - db2pow(distorted_spectrum)))
-    return pow2db(difference / np.sum(np.abs(db2pow(difference))))
+    """Compute the normalized difference of two spectra"""
+    difference = np.sum(
+        np.abs(db2pow(reference_spectrum) - db2pow(distorted_spectrum)), axis=1
+    )
+    return pow2db(difference / np.sum(np.abs(db2pow(reference_spectrum)), axis=1))
 
 
 def compute_spectral_support(spectrum: np.array, scale: float = 12) -> np.array:

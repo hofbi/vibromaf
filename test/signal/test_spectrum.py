@@ -34,17 +34,18 @@ class SpectrumTest(unittest.TestCase):
     def test_compute_normalized_spectral_difference__same_signals_should_be_minus_inf(
         self,
     ):
-        signal = np.ones(10)
+        signal = np.ones((10, 2))
         result = compute_normalized_spectral_difference(signal, signal)
-        self.assertEqual(-np.inf, result)
+        self.assertListEqual([-np.inf] * 10, list(result))
 
     def test_compute_normalized_spectral_difference__different_signals_should_be_positive(
         self,
     ):
-        signal_one = np.ones(10)
-        signal_two = np.zeros(10)
+        signal_one = np.ones((2, 10))
+        signal_two = np.zeros((2, 10))
         result = compute_normalized_spectral_difference(signal_one, signal_two)
-        self.assertAlmostEqual(1.542, result, delta=0.001)
+        self.assertGreaterEqual(0, result[0])
+        self.assertEqual(2, result.size)
 
     def test_compute_spectral_support__zeros_array__array_with_0p5(self):
         spectrum = np.zeros((2, 4))

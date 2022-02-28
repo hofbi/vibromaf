@@ -34,7 +34,7 @@ from vibromaf.metrics.stsim import st_sim
 
 st_sim_score = st_sim(sample_distorted_signal, sample_reference_signal)
 
-print(st_sim_score)  # Should be around 0.85
+print(st_sim_score)  # Should be around 0.81
 ```
 
 Find further details how to use this metric at [ST-SIM](metrics/stsim.md).
@@ -48,7 +48,12 @@ from vibromaf.metrics.spqi import spqi
 
 spqi_score = spqi(sample_distorted_signal, sample_reference_signal)
 
-print(spqi_score)  # Should be around 1.0
+print(spqi_score)  # Should be around 0.43
 ```
 
 Find further details how to use this metric at [SPQI](metrics/spqi.md).
+
+## Full Example
+
+Find the full example in `examples/white_noise.py`.
+All examples available can be found in the `examples` folder.

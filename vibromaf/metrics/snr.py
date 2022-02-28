@@ -3,6 +3,7 @@
 import numpy as np
 
 from vibromaf.signal.spectrum import pow2db, signal_energy
+from vibromaf.signal.transform import preprocess_input_signal
 
 
 def snr(distorted: np.array, reference: np.array) -> float:
@@ -17,6 +18,7 @@ def snr(distorted: np.array, reference: np.array) -> float:
     -------
     * `float` The SNR.
     """
+    distorted = preprocess_input_signal(distorted, reference)
     return pow2db(signal_energy(reference) / signal_energy(distorted - reference))
 
 

@@ -21,4 +21,26 @@ class SPQITest(unittest.TestCase):
 
         result = spqi(sample_distorted_signal, sample_reference_signal)
 
-        self.assertAlmostEqual(1.0, result)
+        self.assertGreaterEqual(1, result)
+        self.assertGreaterEqual(result, 0)
+
+    def test_spqi__truncated_signals_identical__dist_should_be_truncated(self):
+        signal = np.linspace(0, 1, 2800)
+        dist = np.append(np.linspace(0, 1, 2800), np.ones(300))
+        with self.assertWarnsRegex(RuntimeWarning, r"Truncating distorted signal"):
+            result = spqi(dist, signal)
+        self.assertEqual(1, result)
+
+    def test_spqi__dist_larger_than_ref__dist_should_be_truncated(self):
+        signal = np.linspace(0, 1, 2800)
+        dist = np.append(np.ones(300), np.linspace(0, 1, 2800))
+        with self.assertWarnsRegex(RuntimeWarning, r"Truncating distorted signal"):
+            result = spqi(dist, signal)
+        self.assertGreaterEqual(1, result)
+        self.assertGreaterEqual(result, 0)
+
+    def test_spqi__dist_shorter_than_ref__should_throw(self):
+        signal = np.append(np.linspace(0, 1, 2800), np.ones(300))
+        dist = np.linspace(0, 1, 2800)
+        with self.assertRaisesRegex(ValueError, r"Distorted .* must not be shorter"):
+            spqi(dist, signal)

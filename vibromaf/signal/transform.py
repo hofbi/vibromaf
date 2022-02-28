@@ -1,6 +1,7 @@
 """Transform module"""
 
 import math
+import warnings
 from dataclasses import dataclass
 from typing import Callable
 
@@ -9,6 +10,21 @@ from scipy.fftpack import dct
 
 from vibromaf.signal.perception import PerceptualThreshold
 from vibromaf.signal.spectrum import mag2db
+
+
+def preprocess_input_signal(distorted: np.array, reference: np.array) -> np.array:
+    """Verify input signal lengths and prepare distorted signal for the metrics"""
+    if distorted.size > reference.size:
+        warnings.warn(
+            f"Truncating distorted signal {distorted.shape} since longer than reference signal {reference.shape}.",
+            RuntimeWarning,
+        )
+        return np.resize(distorted, reference.shape)
+    elif distorted.size < reference.size:
+        raise ValueError(
+            f"Distorted signal {distorted.shape} must not be shorter than reference signal {reference.shape}!"
+        )
+    return distorted
 
 
 def compute_block_dft(block: np.array) -> np.array:
@@ -58,8 +74,8 @@ class BlockBuilder:
 
     def divide_and_normalize(self, signal: np.array) -> np.array:
         blocks = self.divide(signal)
-        means = np.apply_along_axis(np.mean, 1, blocks)
-        stds = np.apply_along_axis(np.std, 1, blocks)
+        means = np.apply_along_axis(np.mean, 1, blocks).reshape((blocks.shape[0], 1))
+        stds = np.apply_along_axis(np.std, 1, blocks).reshape((blocks.shape[0], 1))
         return (blocks - means) / stds
 
 

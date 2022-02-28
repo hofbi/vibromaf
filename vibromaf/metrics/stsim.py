@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from vibromaf.signal.spectrum import compute_spectral_support
-from vibromaf.signal.transform import PerceptualSpectrumBuilder
+from vibromaf.signal.transform import PerceptualSpectrumBuilder, preprocess_input_signal
 
 
 def st_sim(distorted: np.array, reference: np.array, eta: float = 2 / 3) -> float:
@@ -33,6 +33,7 @@ class STSIM:
     perceptual_spectrum_builder = PerceptualSpectrumBuilder()
 
     def calculate(self, distorted: np.array, reference: np.array) -> float:
+        distorted = preprocess_input_signal(distorted, reference)
         if np.array_equal(distorted, reference):
             return 1
 
@@ -59,16 +60,14 @@ class STSIM:
         return pow(temporal_sim, self.eta) * pow(spectral_sim, 1 - self.eta)
 
     @staticmethod
-    def compute_block_sim(
-        reference_block: np.array, distorted_block: np.array
-    ) -> float:
-        return np.sum(reference_block * distorted_block) / np.sum(
-            np.power(reference_block, 2)
+    def compute_sim(reference: np.array, distorted: np.array) -> float:
+        return float(
+            np.mean(
+                np.sum(reference * distorted, axis=1)
+                / np.sum(np.power(reference, 2), axis=1)
+            )
         )
 
-    @staticmethod
-    def compute_sim(reference: np.array, distorted: np.array) -> float:
-        block_sim = np.apply_along_axis(
-            STSIM.compute_block_sim, 1, reference, distorted
-        )
-        return np.mean(block_sim)
+    def __post_init__(self):
+        if not 0.0 < self.eta < 1.0:
+            raise ValueError("Eta must be between 0 and 1.")

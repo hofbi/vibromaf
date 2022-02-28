@@ -11,6 +11,7 @@ from vibromaf.signal.transform import (
     compute_block_dct,
     compute_block_dft,
     cut_off_strategy,
+    preprocess_input_signal,
     zero_padding_strategy,
 )
 
@@ -87,6 +88,24 @@ class TransformTest(unittest.TestCase):
         result = zero_padding_strategy(input_signal, 3)
         self.assertListEqual([1, 2, 3], list(result))
 
+    def test_preprocess_input_signal__dist_larger_than_ref__dist_should_be_truncated_and_warn(
+        self,
+    ):
+        signal = np.array([0, 1])
+        dist = np.array([0, 1, 2])
+        with self.assertWarnsRegex(
+            RuntimeWarning,
+            r"Truncating distorted signal .* since longer than reference",
+        ):
+            result = preprocess_input_signal(dist, signal)
+        self.assertListEqual(list(signal), list(result))
+
+    def test_preprocess_input_signal__dist_shorter_than_ref__should_throw(self):
+        signal = np.array([0, 1, 2])
+        dist = np.array([0, 1])
+        with self.assertRaisesRegex(ValueError, r"Distorted .* must not be shorter"):
+            preprocess_input_signal(dist, signal)
+
 
 class BlockBuilderTest(unittest.TestCase):
     """Block Builder Test"""
@@ -130,6 +149,14 @@ class BlockBuilderTest(unittest.TestCase):
         unit = BlockBuilder(4)
         result = unit.divide_and_normalize(input_signal)
         self.assertListEqual([-1, 1, -1, 1], list(result[0]))
+
+    def test_divide_and_normalize__multiple_blocks__correct_reshaped(self):
+        input_signal = np.array([-2, 2, -2, 2, -2, 2, -2, 2])
+        unit = BlockBuilder(2)
+        result = unit.divide_and_normalize(input_signal)
+        self.assertTrue(
+            np.array_equal(np.array([[-1, 1], [-1, 1], [-1, 1], [-1, 1]]), result)
+        )
 
 
 class PerceptualSpectrumBuilderTest(unittest.TestCase):

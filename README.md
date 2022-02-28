@@ -1,5 +1,6 @@
 # VibroMAF - Vibrotactile Multi-Method Assessment Fusion
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hofbi/vibromaf/main.svg)](https://results.pre-commit.ci/latest/github/hofbi/vibromaf/main)
 [![Actions Status](https://github.com/hofbi/vibromaf/workflows/CI/badge.svg)](https://github.com/hofbi/vibromaf)
 [![Actions Status](https://github.com/hofbi/vibromaf/workflows/Docs/badge.svg)](https://hofbi.github.io/vibromaf)
 [![Actions Status](https://github.com/hofbi/vibromaf/workflows/CodeQL/badge.svg)](https://github.com/hofbi/vibromaf)

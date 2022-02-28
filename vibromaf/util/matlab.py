@@ -63,7 +63,39 @@ def reshape_per_compression_rate(
     data: np.array, number_of_compression_levels: int = 17
 ) -> np.array:
     """
-    Reshape the data into same compression level per row:
+    Reshape the data into same compression level per row
     """
     number_of_columns = int(data.size / number_of_compression_levels)
     return data.reshape((number_of_compression_levels, number_of_columns))
+
+
+class MatSignalLoader:
+    """Helper class to load test signals from mat files"""
+
+    def __init__(self, metric: str, codec: str = "VCPWQ"):
+        self.__reference = load_signal_from_mat(
+            config.DATA_PATH / "Signals.mat", "Signals"
+        )
+        self.__distorted = load_signal_from_mat(
+            config.DATA_PATH / f"recsig_{codec}.mat", f"recsig_{codec}"
+        )
+        self.__metric_scores = load_signal_from_mat(
+            config.DATA_PATH / f"{metric}_{codec}.mat", f"{metric}_{codec}"
+        )
+
+    def signal_ids(self):
+        return range(self.__reference.shape[1])
+
+    def compression_levels(self):
+        return range(self.__distorted.shape[0])
+
+    def load_reference_signal(self, signal_id: int):
+        return self.__reference[:, signal_id]
+
+    def load_distorted_signal(self, signal_id: int, compression_level: int):
+        return self.__distorted[compression_level, signal_id].reshape(
+            -1,
+        )
+
+    def load_quality_score(self, signal_id: int, compression_level: int):
+        return self.__metric_scores[compression_level, signal_id]

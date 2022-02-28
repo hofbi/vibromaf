@@ -31,3 +31,10 @@ deploy: package check_dist
 
 clean:
 	rm -rf site htmlcov dist vibromaf.egg-info
+
+smoke_test:
+	mv dist/vibromaf-*.tar.gz dist/vibromaf.tar.gz || true
+	pip3 install -U dist/vibromaf.tar.gz
+	cd examples && python3 white_noise.py
+
+smoke_test_clean: clean package smoke_test

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from vibromaf.signal.spectrum import compute_normalized_spectral_difference
-from vibromaf.signal.transform import PerceptualSpectrumBuilder
+from vibromaf.signal.transform import PerceptualSpectrumBuilder, preprocess_input_signal
 
 
 def spqi(
@@ -37,6 +37,7 @@ class SPQI:
     perceptual_spectrum_builder = PerceptualSpectrumBuilder()
 
     def calculate(self, distorted: np.array, reference: np.array) -> float:
+        distorted = preprocess_input_signal(distorted, reference)
         if np.array_equal(distorted, reference):
             return 1
 
@@ -53,9 +54,11 @@ class SPQI:
 
         block_spqi_scores = self.__compute_block_spqi(norm_perceptual_difference)
 
-        return np.mean(block_spqi_scores)
+        return float(np.mean(block_spqi_scores))
 
-    def __compute_block_spqi(self, normalized_perceptual_difference: np.array) -> float:
+    def __compute_block_spqi(
+        self, normalized_perceptual_difference: np.array
+    ) -> np.array:
         return (
             1 - np.tanh(self.eta * normalized_perceptual_difference - self.threshold)
         ) / 2

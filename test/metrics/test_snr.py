@@ -33,7 +33,20 @@ class SNRTest(unittest.TestCase):
 
         result = snr(sample_distorted_signal, sample_reference_signal)
 
-        self.assertAlmostEqual(60, result, delta=1.0)
+        self.assertAlmostEqual(60, result, delta=2.0)
+
+    def test_snr__dist_larger_than_ref__dist_should_be_truncated_and_warn(self):
+        signal = np.array([0, 1])
+        dist = np.array([0, 1, 2])
+        with self.assertWarnsRegex(RuntimeWarning, r"Truncating distorted signal"):
+            result = snr(dist, signal)
+        self.assertEqual(np.Inf, result)
+
+    def test_snr__dist_shorter_than_ref__should_throw(self):
+        signal = np.array([0, 1, 2])
+        dist = np.array([0, 1])
+        with self.assertRaisesRegex(ValueError, r"Distorted .* must not be shorter"):
+            snr(dist, signal)
 
     def test_nsnr__snr_larger_than_max__should_be_1(self):
         signal = np.array([0, 1])

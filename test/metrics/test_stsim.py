@@ -21,15 +21,51 @@ class STSIMTest(unittest.TestCase):
 
         result = st_sim(sample_distorted_signal, sample_reference_signal)
 
-        self.assertAlmostEqual(0.85, result, delta=0.1)
+        self.assertGreaterEqual(1, result)
+        self.assertGreaterEqual(result, 0)
 
-    def test_compute_block_sim__one_block_zero__zero(self):
-        ref_block = np.ones(4)
-        dist_block = np.zeros(4)
-        result = STSIM.compute_block_sim(ref_block, dist_block)
+    def test_st_sim__truncated_signals_identical__dist_should_be_truncated(self):
+        signal = np.linspace(0, 1, 2800)
+        dist = np.append(np.linspace(0, 1, 2800), np.ones(300))
+        with self.assertWarnsRegex(RuntimeWarning, r"Truncating distorted signal"):
+            result = st_sim(dist, signal)
+        self.assertEqual(1, result)
+
+    def test_st_sim__dist_larger_than_ref__dist_should_be_truncated(self):
+        signal = np.linspace(0, 1, 2800)
+        dist = np.append(np.ones(300), np.linspace(0, 1, 2800))
+        with self.assertWarnsRegex(RuntimeWarning, r"Truncating distorted signal"):
+            result = st_sim(dist, signal)
+        self.assertGreaterEqual(1, result)
+        self.assertGreaterEqual(result, 0)
+
+    def test_st_sim__dist_shorter_than_ref__should_throw(self):
+        signal = np.append(np.linspace(0, 1, 2800), np.ones(300))
+        dist = np.linspace(0, 1, 2800)
+        with self.assertRaisesRegex(ValueError, r"Distorted .* must not be shorter"):
+            st_sim(dist, signal)
+
+    def test_compute_sim__one_block_zero__zero(self):
+        ref_block = np.ones((4, 2))
+        dist_block = np.zeros((4, 2))
+        result = STSIM.compute_sim(ref_block, dist_block)
         self.assertEqual(0, result)
 
-    def test_compute_block_sim__blocks_identical__one(self):
-        block = np.array([1, 2, 3, 4])
-        result = STSIM.compute_block_sim(block, block)
+    def test_compute_sim__blocks_identical__one(self):
+        block = np.ones((4, 3))
+        result = STSIM.compute_sim(block, block)
         self.assertEqual(1, result)
+
+    def test_compute_sim__values_larger_than_one_possible(self):
+        ref_block = np.array([[0.5] * 4])
+        dist_block = np.array([[0.5, 0.5, 0.5, 1]])
+        result = STSIM.compute_sim(ref_block, dist_block)
+        self.assertEqual(1.25, result)
+
+    def test_st_sim_init__eta_grater_one__should_throw(self):
+        with self.assertRaisesRegex(ValueError, "Eta must be between 0 and 1."):
+            STSIM(eta=1.1)
+
+    def test_st_sim_init__eta_negative__should_throw(self):
+        with self.assertRaisesRegex(ValueError, "Eta must be between 0 and 1."):
+            STSIM(eta=-0.1)
