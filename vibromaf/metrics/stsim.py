@@ -64,7 +64,7 @@ class STSIM:
         return float(
             np.mean(
                 np.sum(reference * distorted, axis=1)
-                / np.sum(np.power(reference, 2), axis=1)
+                / (np.sum(np.power(reference, 2), axis=1) + np.finfo(float).eps)
             )
         )
 

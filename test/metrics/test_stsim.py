@@ -1,5 +1,5 @@
 """Spectral Temporal SIMilarity Tests"""
-
+import math
 import unittest
 
 import numpy as np
@@ -60,7 +60,13 @@ class STSIMTest(unittest.TestCase):
         ref_block = np.array([[0.5] * 4])
         dist_block = np.array([[0.5, 0.5, 0.5, 1]])
         result = STSIM.compute_sim(ref_block, dist_block)
-        self.assertEqual(1.25, result)
+        self.assertAlmostEqual(1.25, result)
+
+    def test_compute_sim__input_signals_identical_zero__should_be_not_nan(self):
+        signal = np.zeros((4, 1024))
+        distorted = np.zeros((4, 1024))
+        result = STSIM.compute_sim(distorted, signal)
+        self.assertFalse(math.isnan(result))
 
     def test_st_sim_init__eta_grater_one__should_throw(self):
         with self.assertRaisesRegex(ValueError, "Eta must be between 0 and 1."):

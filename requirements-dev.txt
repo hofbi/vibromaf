@@ -10,3 +10,4 @@ matplotlib
 tikzplotlib
 mkdocs
 mkdocstrings
+pandas

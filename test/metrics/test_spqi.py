@@ -44,3 +44,11 @@ class SPQITest(unittest.TestCase):
         dist = np.linspace(0, 1, 2800)
         with self.assertRaisesRegex(ValueError, r"Distorted .* must not be shorter"):
             spqi(dist, signal)
+
+    def test_spqi__input_signals_identical_zero__should_be_valid(self):
+        signal = np.zeros(1024)
+        distorted = np.zeros(1024)
+        signal[-1] = 0.00001
+        result = spqi(distorted, signal)
+        self.assertGreaterEqual(1, result)
+        self.assertGreaterEqual(result, 0)

@@ -30,7 +30,7 @@ def mag2db(power: np.array) -> np.array:
 
 def signal_energy(signal: np.array) -> np.array:
     """Calculate the signal energy"""
-    return np.sum(np.power(signal, 2))
+    return np.sum(np.square(signal, dtype=np.float64))
 
 
 def compute_normalized_spectral_difference(
@@ -40,7 +40,10 @@ def compute_normalized_spectral_difference(
     difference = np.sum(
         np.abs(db2pow(reference_spectrum) - db2pow(distorted_spectrum)), axis=1
     )
-    return pow2db(difference / np.sum(np.abs(db2pow(reference_spectrum)), axis=1))
+    return pow2db(
+        difference
+        / (np.sum(np.abs(db2pow(reference_spectrum)), axis=1) + np.finfo(float).eps)
+    )
 
 
 def compute_spectral_support(spectrum: np.array, scale: float = 12) -> np.array:

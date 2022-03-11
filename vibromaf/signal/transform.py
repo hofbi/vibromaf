@@ -76,7 +76,7 @@ class BlockBuilder:
         blocks = self.divide(signal)
         means = np.apply_along_axis(np.mean, 1, blocks).reshape((blocks.shape[0], 1))
         stds = np.apply_along_axis(np.std, 1, blocks).reshape((blocks.shape[0], 1))
-        return (blocks - means) / stds
+        return (blocks - means) / (stds + np.finfo(float).eps)
 
 
 @dataclass(frozen=True)
@@ -84,7 +84,7 @@ class PerceptualSpectrumBuilder:
     """Calculate perceptual spectrum"""
 
     block_builder: BlockBuilder = BlockBuilder(512)
-    perceptual_threshold: PerceptualThreshold = PerceptualThreshold(2800)
+    perceptual_threshold: PerceptualThreshold = PerceptualThreshold(8000)
     block_transform_strategy: Callable[[np.array], np.array] = compute_block_dct
 
     def compute_perceptual_spectrum(self, signal: np.array) -> np.array:

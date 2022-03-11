@@ -158,6 +158,14 @@ class BlockBuilderTest(unittest.TestCase):
             np.array_equal(np.array([[-1, 1], [-1, 1], [-1, 1], [-1, 1]]), result)
         )
 
+    def test_divide_and_normalize__input_signals_identical_zero__should_be_not_nan(
+        self,
+    ):
+        input_signal = np.zeros(10)
+        unit = BlockBuilder(5)
+        result = unit.divide_and_normalize(input_signal)
+        self.assertFalse(np.isnan(result).any())
+
 
 class PerceptualSpectrumBuilderTest(unittest.TestCase):
     """Perceptual Spectrum Builder Test"""

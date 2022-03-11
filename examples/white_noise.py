@@ -1,6 +1,15 @@
 """Simple get started example with white noise signals"""
 
+import sys
+from pathlib import Path
+
 import numpy as np
+
+# This is to make the local vibromaf package available
+try:
+    sys.path.append(str(Path(__file__).absolute().parents[1]))
+except IndexError:
+    pass
 
 from vibromaf.metrics.snr import snr
 from vibromaf.metrics.spqi import spqi
