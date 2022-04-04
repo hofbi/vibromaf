@@ -12,7 +12,7 @@ repos:
       - id: trailing-whitespace
       - id: end-of-file-fixer
   - repo: https://github.com/psf/black
-    rev: 22.1.0
+    rev: 22.3.0
     hooks:
       - id: black
         language_version: python3
@@ -32,11 +32,11 @@ repos:
       - id: isort
         args: [--profile, black, --multi-line, "3"]
   - repo: https://github.com/PyCQA/pylint
-    rev: v2.12.2
+    rev: v2.13.4
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.31.0
+    rev: v2.31.1
     hooks:
       - id: pyupgrade
         args: [--py37-plus]
