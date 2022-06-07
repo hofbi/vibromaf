@@ -14,8 +14,8 @@ def load_signal_from_mat(mat_file: Path, signal_name: str) -> np.array:
     mat = io.loadmat(str(mat_file))
     try:
         return mat[signal_name]
-    except KeyError:
-        raise KeyError(f"Available keys: {mat.keys()}")
+    except KeyError as exc:
+        raise KeyError(f"Available keys: {mat.keys()}") from exc
 
 
 def load_data_for_metric(
