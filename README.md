@@ -35,14 +35,15 @@ If you use this work, please cite our paper ([PDF](https://www.researchgate.net/
 
 ```tex
 @inproceedings{noll_vibromaf,
-  author    = {Noll, Andreas and  Hofbauer, Markus and  Muschter, Evelyn and  Li, Shu-Chen and  Steinbach, Eckehard},
-  booktitle = {IEEE Haptics Symposium 2022},
+  author    = {Noll, Andreas and Hofbauer, Markus and Muschter, Evelyn and Li, Shu-Chen and Steinbach, Eckehard},
+  booktitle = {2022 IEEE Haptics Symposium (HAPTICS)},
   title     = {Automated Quality Assessment for Compressed Vibrotactile Signals Using Multi-Method Assessment Fusion},
   year      = {2022},
   volume    = {},
   number    = {},
-  address   = {Santa Barabara, California, USA},
-  doi       = {}
+  pages     = {1-6},
+  doi       = {10.1109/HAPTICS52432.2022.9765599},
+  address   = {Santa Barabara, California, USA}
 }
 ```
 
