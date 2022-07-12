@@ -1,4 +1,4 @@
-"""Perception module tests"""
+"""Perception module tests."""
 
 import unittest
 
@@ -6,7 +6,7 @@ from vibromaf.signal.perception import PerceptualThreshold
 
 
 class PerceptualThresholdTest(unittest.TestCase):
-    """Perceptual Threshold Test"""
+    """Perceptual Threshold Test."""
 
     def test_perceptual_threshold__block_length_ten__output_array_length_ten(self):
         block_length = 10

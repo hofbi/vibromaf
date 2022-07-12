@@ -1,4 +1,4 @@
-"""Tests for model helper"""
+"""Tests for model helper."""
 
 from pathlib import Path
 
@@ -8,7 +8,7 @@ from vibromaf.util import model
 
 
 class ModelTest(TestCase):
-    """Model Test"""
+    """Model Test."""
 
     def setUp(self) -> None:
         self.setUpPyfakefs()
@@ -22,10 +22,8 @@ class ModelTest(TestCase):
         self.assertEqual(str(pipe.get_params()), str(loaded.get_params()))
 
     def test_make_vibromaf_pipeline__standard_scaler_should_scale_column_wise(self):
-        """
-        As we have SNR in one colum and other metrics with range of 0 to 1 in the
-        other columns then scaler should not scale them based on the SNR range.
-        """
+        """As we have SNR in one colum and other metrics with range of 0 to 1 in the
+        other columns then scaler should not scale them based on the SNR range."""
         pipe = model.make_vibromaf_pipeline()
         data = [[0, 0], [0, 0], [10, 1], [10, 1]]
 

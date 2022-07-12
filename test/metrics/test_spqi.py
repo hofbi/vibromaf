@@ -1,4 +1,6 @@
-"""Spectral Perceptual Quality Index Tests"""
+"""Spectral Perceptual Quality Index Tests."""
+
+# pylint: disable=duplicate-code
 
 import unittest
 
@@ -8,7 +10,7 @@ from vibromaf.metrics.spqi import spqi
 
 
 class SPQITest(unittest.TestCase):
-    """SPQI Test"""
+    """SPQI Test."""
 
     def test_spqi_wrapper__dist_and_ref_identical__should_be_one(self):
         signal = np.linspace(0, 1, 1000)

@@ -1,4 +1,4 @@
-"""Example to evaluate WAV files"""
+"""Example to evaluate WAV files."""
 
 import sys
 from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser, FileType
@@ -12,13 +12,16 @@ try:
 except IndexError:
     pass
 
+# pylint: disable=wrong-import-position
 from vibromaf.metrics.snr import snr
 from vibromaf.metrics.spqi import spqi
 from vibromaf.metrics.stsim import st_sim
 
+# pylint: enable=wrong-import-position
+
 
 def parse_arguments():
-    """Parse command line arguments"""
+    """Parse command line arguments."""
     parser = ArgumentParser(
         description=__doc__,
         formatter_class=ArgumentDefaultsHelpFormatter,
@@ -37,7 +40,7 @@ def parse_arguments():
 
 
 def main():
-    """main"""
+    """main."""
     args = parse_arguments()
 
     distorted_signal = wavfile.read(args.distorted.name)[1]

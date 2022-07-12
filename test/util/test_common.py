@@ -1,4 +1,4 @@
-"""Test common utilities"""
+"""Test common utilities."""
 
 import unittest
 
@@ -6,7 +6,7 @@ import numpy as np
 
 
 class CommonTest(unittest.TestCase):
-    """Common Test"""
+    """Common Test."""
 
     def test_pc__average_pc_of_parts_is_not_equal_to_pc_of_all(self):
         one = list(range(1, 11))

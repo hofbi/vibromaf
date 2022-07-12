@@ -1,4 +1,4 @@
-"""Signal to Noise Ratio Tests"""
+"""Signal to Noise Ratio Tests."""
 
 import unittest
 
@@ -8,7 +8,7 @@ from vibromaf.metrics.snr import nsnr, snr
 
 
 class SNRTest(unittest.TestCase):
-    """SNR Test"""
+    """SNR Test."""
 
     def test_snr__dist_and_ref_identical__should_be_inf(self):
         signal = np.array([0, 1])

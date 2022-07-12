@@ -1,14 +1,14 @@
 -r requirements.txt
 
 build
-twine
-pre-commit
 coverage
-pyfakefs
 jupyter
 matplotlib
-tikzplotlib
 mkdocs
 mkdocstrings
 mkdocstrings-python
 pandas
+pre-commit
+pyfakefs
+tikzplotlib
+twine

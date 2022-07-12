@@ -1,4 +1,7 @@
-"""Spectral Temporal SIMilarity Tests"""
+"""Spectral Temporal SIMilarity Tests."""
+
+# pylint: disable=duplicate-code
+
 import math
 import unittest
 
@@ -8,7 +11,7 @@ from vibromaf.metrics.stsim import STSIM, st_sim
 
 
 class STSIMTest(unittest.TestCase):
-    """STSIM Test"""
+    """STSIM Test."""
 
     def test_st_sim_wrapper__dist_and_ref_identical__should_be_one(self):
         signal = np.array([0, 1])

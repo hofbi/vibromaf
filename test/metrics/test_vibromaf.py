@@ -1,4 +1,4 @@
-"""Haptic Multi-Method Assessment Fusion Tests"""
+"""Haptic Multi-Method Assessment Fusion Tests."""
 
 from pathlib import Path
 
@@ -10,7 +10,7 @@ from vibromaf.util import model
 
 
 class VibroMAFTest(TestCase):
-    """VibroMAF Test"""
+    """VibroMAF Test."""
 
     def setUp(self) -> None:
         self.setUpPyfakefs()

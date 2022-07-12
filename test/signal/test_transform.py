@@ -1,4 +1,4 @@
-"""Transform module tests"""
+"""Transform module tests."""
 
 import unittest
 
@@ -17,7 +17,7 @@ from vibromaf.signal.transform import (
 
 
 class TransformTest(unittest.TestCase):
-    """Transform Test"""
+    """Transform Test."""
 
     def test_block_dft__ones_block__constant_block(self):
         input_block = np.array([1, 0, 0, 0, 0, 0, 0, 0, 0, 0])
@@ -108,7 +108,7 @@ class TransformTest(unittest.TestCase):
 
 
 class BlockBuilderTest(unittest.TestCase):
-    """Block Builder Test"""
+    """Block Builder Test."""
 
     def test_divide__empty_array__should_throw(self):
         unit = BlockBuilder(10)
@@ -168,7 +168,7 @@ class BlockBuilderTest(unittest.TestCase):
 
 
 class PerceptualSpectrumBuilderTest(unittest.TestCase):
-    """Perceptual Spectrum Builder Test"""
+    """Perceptual Spectrum Builder Test."""
 
     def test_compute_perceptual_spectrum__signal_length_equals_block_length__signal_shape_unchanged(
         self,

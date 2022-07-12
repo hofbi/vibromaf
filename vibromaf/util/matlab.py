@@ -1,4 +1,4 @@
-"""Utility functions for MATLAB files"""
+"""Utility functions for MATLAB files."""
 
 from pathlib import Path
 from typing import List, Tuple
@@ -10,7 +10,7 @@ from vibromaf import config
 
 
 def load_signal_from_mat(mat_file: Path, signal_name: str) -> np.array:
-    """Load .mat file and parse signal from it"""
+    """Load .mat file and parse signal from it."""
     mat = io.loadmat(str(mat_file))
     try:
         return mat[signal_name]
@@ -21,7 +21,7 @@ def load_signal_from_mat(mat_file: Path, signal_name: str) -> np.array:
 def load_data_for_metric(
     metric: str, test_indices: List[int]
 ) -> Tuple[np.array, np.array]:
-    """Load and concatenate the training and test data"""
+    """Load and concatenate the training and test data."""
     vcpwq = load_signal_from_mat(
         config.DATA_PATH / f"{metric}_VCPWQ.mat", f"{metric}_VCPWQ"
     )
@@ -52,8 +52,8 @@ def load_data_for_metric(
 
 
 def split_per_codec(data: np.array, number_of_codecs: int = 3) -> np.array:
-    """
-    Split the data into equal pieces:
+    """Split the data into equal pieces:
+
     As we concatenate them per codec this is a split per codec
     """
     return np.split(data, number_of_codecs)
@@ -62,15 +62,13 @@ def split_per_codec(data: np.array, number_of_codecs: int = 3) -> np.array:
 def reshape_per_compression_rate(
     data: np.array, number_of_compression_levels: int = 17
 ) -> np.array:
-    """
-    Reshape the data into same compression level per row
-    """
+    """Reshape the data into same compression level per row."""
     number_of_columns = int(data.size / number_of_compression_levels)
     return data.reshape((number_of_compression_levels, number_of_columns))
 
 
 class MatSignalLoader:
-    """Helper class to load test signals from mat files"""
+    """Helper class to load test signals from mat files."""
 
     def __init__(self, metric: str, codec: str = "VCPWQ"):
         self.__reference = load_signal_from_mat(

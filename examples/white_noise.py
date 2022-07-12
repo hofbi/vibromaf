@@ -1,4 +1,4 @@
-"""Simple get started example with white noise signals"""
+"""Simple get started example with white noise signals."""
 
 import sys
 from pathlib import Path
@@ -11,9 +11,12 @@ try:
 except IndexError:
     pass
 
+# pylint: disable=wrong-import-position
 from vibromaf.metrics.snr import snr
 from vibromaf.metrics.spqi import spqi
 from vibromaf.metrics.stsim import st_sim
+
+# pylint: enable=wrong-import-position
 
 # Define sample signals
 sample_reference_signal = np.ones(1000) * 1000 + np.random.randn(1000)

@@ -1,4 +1,4 @@
-"""Signal to Noise Ratio"""
+"""Signal to Noise Ratio."""
 
 import numpy as np
 
@@ -7,7 +7,7 @@ from vibromaf.signal.transform import preprocess_input_signal
 
 
 def snr(distorted: np.array, reference: np.array) -> float:
-    """Calculate the signal-to-noise ratio
+    """Calculate the signal-to-noise ratio.
 
     Parameters
     ------
@@ -25,5 +25,5 @@ def snr(distorted: np.array, reference: np.array) -> float:
 def nsnr(
     distorted: np.array, reference: np.array, normalization_db: float = 75
 ) -> float:
-    """Calculate the normalized signal-to-noise ratio restricted to range of 0 to 1"""
+    """Calculate the normalized signal-to-noise ratio restricted to range of 0 to 1."""
     return max(0.0, min(1.0, snr(distorted, reference) / normalization_db))

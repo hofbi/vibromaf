@@ -1,4 +1,4 @@
-"""Tests for spectrum module"""
+"""Tests for spectrum module."""
 
 import unittest
 
@@ -14,7 +14,7 @@ from vibromaf.signal.spectrum import (
 
 
 class SpectrumTest(unittest.TestCase):
-    """Spectrum Tests"""
+    """Spectrum Tests."""
 
     def test_pow2db(self):
         signal = np.array([100, 100, 10])

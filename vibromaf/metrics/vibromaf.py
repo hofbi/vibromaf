@@ -1,4 +1,4 @@
-"""Vibrotactile Multi-Method Assessment Fusion"""
+"""Vibrotactile Multi-Method Assessment Fusion."""
 
 from pathlib import Path
 
@@ -11,13 +11,13 @@ from vibromaf.util import model
 
 
 def vibro_maf(distorted: np.array, reference: np.array, model_path: Path) -> float:
-    """Wrapper function to calculate the SPQI score"""
+    """Wrapper function to calculate the SPQI score."""
     metric = VibroMAF(model_path, SPQI(0.3, -2.0), STSIM(2 / 3))
     return metric.calculate(distorted, reference)
 
 
 class VibroMAF:
-    """Vibrotactile Multi-Method Assessment Fusion"""
+    """Vibrotactile Multi-Method Assessment Fusion."""
 
     def __init__(self, model_path: Path, spqi: SPQI, st_sim: STSIM) -> None:
         self.__model = model.load_model(model_path)

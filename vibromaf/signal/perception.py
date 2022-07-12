@@ -1,4 +1,4 @@
-"""Module human vibrotactile perception"""
+"""Module human vibrotactile perception."""
 
 import math
 from dataclasses import dataclass
@@ -8,7 +8,7 @@ import numpy as np
 
 @dataclass(frozen=True)
 class PerceptualThreshold:
-    """Human perceptual threshold"""
+    """Human perceptual threshold."""
 
     sampling_frequency: int
     x_scaler: float = 62

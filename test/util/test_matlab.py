@@ -1,4 +1,4 @@
-"""Test matlab utilities"""
+"""Test matlab utilities."""
 
 import unittest
 from pathlib import Path
@@ -9,7 +9,7 @@ from vibromaf.util import matlab
 
 
 class MatlabTest(unittest.TestCase):
-    """Matlab Test"""
+    """Matlab Test."""
 
     RES_PATH = Path(__file__).parent / "res"
 

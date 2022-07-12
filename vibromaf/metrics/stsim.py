@@ -1,4 +1,4 @@
-"""Spectral Temporal SIMilarity"""
+"""Spectral Temporal SIMilarity."""
 
 from dataclasses import dataclass
 
@@ -9,7 +9,7 @@ from vibromaf.signal.transform import PerceptualSpectrumBuilder, preprocess_inpu
 
 
 def st_sim(distorted: np.array, reference: np.array, eta: float = 2 / 3) -> float:
-    """Wrapper function to calculate the ST-SIM score
+    """Wrapper function to calculate the ST-SIM score.
 
     Parameters
     ------
@@ -27,7 +27,7 @@ def st_sim(distorted: np.array, reference: np.array, eta: float = 2 / 3) -> floa
 
 @dataclass(frozen=True)
 class STSIM:
-    """Spectral Temporal SIMilarity"""
+    """Spectral Temporal SIMilarity."""
 
     eta: float
     perceptual_spectrum_builder = PerceptualSpectrumBuilder()

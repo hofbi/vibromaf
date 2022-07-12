@@ -1,4 +1,4 @@
-"""Spectral Perceptual Quality Index"""
+"""Spectral Perceptual Quality Index."""
 
 from dataclasses import dataclass
 
@@ -11,7 +11,7 @@ from vibromaf.signal.transform import PerceptualSpectrumBuilder, preprocess_inpu
 def spqi(
     distorted: np.array, reference: np.array, eta: float = 0.3, threshold: float = -2.0
 ) -> float:
-    """Wrapper function to calculate the SPQI score
+    """Wrapper function to calculate the SPQI score.
 
     Parameters
     ------
@@ -30,7 +30,7 @@ def spqi(
 
 @dataclass(frozen=True)
 class SPQI:
-    """Spectral Perceptual Quality Index"""
+    """Spectral Perceptual Quality Index."""
 
     eta: float
     threshold: float
