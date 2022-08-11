@@ -14,7 +14,7 @@ nav:
     - ST-SIM: metrics/stsim.md
     - VibroMAF: metrics/vibromaf.md
   - Reference:
-    - API Reference: reference.md
+    - API Reference: reference/
     - Changelog: CHANGELOG.md
   - Development:
     - Contribute: CONTRIBUTING.md
@@ -38,4 +38,12 @@ theme:
       name: Switch to light mode
 plugins:
   - search
-  - mkdocstrings
+  - gen-files:
+      scripts:
+        - docs/generate_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - section-index
+  - mkdocstrings:
+      watch:
+        - vibromaf

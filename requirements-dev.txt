@@ -4,7 +4,10 @@ build
 coverage
 jupyter
 matplotlib
+mkdocs-gen-files
+mkdocs-literate-nav
 mkdocs-material
+mkdocs-section-index
 mkdocstrings
 mkdocstrings-python
 pandas
