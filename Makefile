@@ -11,7 +11,7 @@ coverage_reports: coverage
 	coverage html
 
 pages: docs coverage_reports
-	cp -r htmlcov site
+	cp -r htmlcov site/coverage
 
 serve_docs:
 	mkdocs serve

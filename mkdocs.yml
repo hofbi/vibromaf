@@ -1,8 +1,8 @@
 site_name: VibroMAF
 site_description: "Vibrotactile Multi-Method Assessment Fusion"
 repo_url: https://github.com/hofbi/vibromaf
-edit_uri: edit/main/docs/
-theme: readthedocs
+repo_name: hofbi/vibromaf
+edit_uri: blob/main/docs/
 nav:
   - General:
     - Home: README.md
@@ -23,6 +23,19 @@ nav:
     - 'Code Coverage': 'https://hofbi.github.io/vibromaf/coverage'
   - About:
     - License: LICENSE.md
+theme:
+  name: material
+  features:
+  - navigation.tabs
+  palette:
+  - scheme: default
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to dark mode
+  - scheme: slate
+    toggle:
+      icon: material/weather-night
+      name: Switch to light mode
 plugins:
   - search
   - mkdocstrings

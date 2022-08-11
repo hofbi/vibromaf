@@ -4,7 +4,7 @@ build
 coverage
 jupyter
 matplotlib
-mkdocs
+mkdocs-material
 mkdocstrings
 mkdocstrings-python
 pandas
