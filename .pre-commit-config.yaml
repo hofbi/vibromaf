@@ -34,7 +34,7 @@ repos:
       - id: docformatter
         args: [--in-place, --wrap-summaries, '88', --wrap-descriptions, '81']
   - repo: https://github.com/PyCQA/flake8
-    rev: 5.0.4  # TODO must be < 5.X until https://gitlab.com/RoPP/flake8-use-pathlib/-/issues/4 is fixed
+    rev: 5.0.4
     hooks:
       - id: flake8
         additional_dependencies:
@@ -55,6 +55,14 @@ repos:
     hooks:
       - id: pyupgrade
         args: [--py37-plus]
+  - repo: https://github.com/PyCQA/autoflake
+    rev: v1.5.3
+    hooks:
+      - id: autoflake
+  - repo: https://github.com/asottile/yesqa
+    rev: v1.4.0
+    hooks:
+      - id: yesqa
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.8.0.4
     hooks:
