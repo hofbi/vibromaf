@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   python:
@@ -13,20 +13,20 @@ jobs:
       matrix:
         python-version: ['3.7', '3.8', '3.9', '3.10']
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements-dev.txt
-    - name: Test
-      run: make test
-    - name: Build Package
-      run: make package
-    - name: Check Package
-      run: make check_dist
-    - name: Smoke Test
-      run: make smoke_test
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+      - name: Test
+        run: make test
+      - name: Build Package
+        run: make package
+      - name: Check Package
+        run: make check_dist
+      - name: Smoke Test
+        run: make smoke_test

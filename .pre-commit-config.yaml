@@ -1,9 +1,9 @@
 default_stages: [commit]
-exclude: '^data/'
+exclude: ^data/
 ci:
-  autoupdate_commit_msg: "chore(deps): pre-commit.ci autoupdate"
-  autoupdate_schedule: "monthly"
-  autofix_commit_msg: "style: pre-commit.ci fixes"
+  autoupdate_commit_msg: 'chore(deps): pre-commit.ci autoupdate'
+  autoupdate_schedule: monthly
+  autofix_commit_msg: 'style: pre-commit.ci fixes'
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -11,12 +11,32 @@ repos:
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+        exclude: ^matlab/
+      - id: check-shebang-scripts-are-executable
       - id: check-symlinks
+      - id: check-yaml
       - id: debug-statements
+      - id: destroyed-symlinks
       - id: detect-private-key
       - id: end-of-file-fixer
+      - id: name-tests-test
       - id: requirements-txt-fixer
       - id: trailing-whitespace
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.16
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-black
+  - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+    rev: 0.2.2
+    hooks:
+      - id: yamlfmt
+        args: [--mapping, '2', --sequence, '4', --offset, '2', --implicit_start]
+        exclude: ^.gitlab-ci.yml$
   - repo: https://github.com/psf/black
     rev: 22.8.0
     hooks:
@@ -45,7 +65,7 @@ repos:
     rev: 5.10.1
     hooks:
       - id: isort
-        args: [--profile, black, --multi-line, "3"]
+        args: [--profile, black, --multi-line, '3']
   - repo: https://github.com/PyCQA/pylint
     rev: v2.15.0
     hooks:
@@ -71,3 +91,21 @@ repos:
     rev: 0.6.0
     hooks:
       - id: nbstripout
+  - repo: https://github.com/s-weigand/flake8-nb
+    rev: v0.5.2
+    hooks:
+      - id: flake8-nb
+        args:
+          - --config
+          - .flake8
+        additional_dependencies:
+          - flake8-use-pathlib
+          - flake8-bugbear
+          - flake8-comprehensions
+  - repo: https://github.com/crate-ci/typos
+    rev: v1.12.4
+    hooks:
+      - id: typos
+        exclude_types:
+          - cmake
+        exclude: ^paper/

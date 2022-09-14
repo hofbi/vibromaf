@@ -1,41 +1,47 @@
 site_name: VibroMAF
-site_description: "Vibrotactile Multi-Method Assessment Fusion"
+site_description: Vibrotactile Multi-Method Assessment Fusion
 repo_url: https://github.com/hofbi/vibromaf
 repo_name: hofbi/vibromaf
 edit_uri: blob/main/docs/
 nav:
   - General:
-    - Home: README.md
-    - Installation: installation.md
-    - 'Get Started': get-started.md
+      - Home: README.md
+      - Installation: installation.md
+      - Get Started: get-started.md
   - Metrics:
-    - SNR: metrics/snr.md
-    - SPQI: metrics/spqi.md
-    - ST-SIM: metrics/stsim.md
-    - VibroMAF: metrics/vibromaf.md
+      - SNR: metrics/snr.md
+      - SPQI: metrics/spqi.md
+      - ST-SIM: metrics/stsim.md
+      - VibroMAF: metrics/vibromaf.md
   - Reference:
-    - API Reference: reference/
-    - Changelog: CHANGELOG.md
+      - API Reference: reference/
+      - Changelog: CHANGELOG.md
   - Development:
-    - Contribute: CONTRIBUTING.md
-    - 'Issue Tracker': 'https://github.com/hofbi/vibromaf/issues'
-    -  Discussions: 'https://github.com/hofbi/vibromaf/discussions'
-    - 'Code Coverage': 'https://hofbi.github.io/vibromaf/coverage'
+      - Contribute: CONTRIBUTING.md
+      - Issue Tracker: https://github.com/hofbi/vibromaf/issues
+      - Discussions: https://github.com/hofbi/vibromaf/discussions
+      - Code Coverage: https://hofbi.github.io/vibromaf/coverage
   - About:
-    - License: LICENSE.md
+      - License: LICENSE.md
 theme:
   name: material
   features:
-  - navigation.tabs
+    - navigation.tabs
   palette:
-  - scheme: default
-    toggle:
-      icon: material/weather-sunny
-      name: Switch to dark mode
-  - scheme: slate
-    toggle:
-      icon: material/weather-night
-      name: Switch to light mode
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
 plugins:
   - search
   - gen-files:

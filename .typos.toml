@@ -1,0 +1,9 @@
+[default.extend-words]
+# Known issue: https://github.com/crate-ci/typos/issues/415
+ba = "ba"
+
+# .sav files
+sav = "sav"
+
+# numpy specfics
+nd = "nd"

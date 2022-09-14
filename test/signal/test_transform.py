@@ -24,7 +24,7 @@ class TransformTest(unittest.TestCase):
         result = compute_block_dft(input_block)
         self.assertListEqual([-10] * 10, list(result))
 
-    def test_block_dft__block_with_legth_10__block_with_same_length(self):
+    def test_block_dft__block_with_length_10__block_with_same_length(self):
         input_block = np.linspace(1, 1, 10)
         result = compute_block_dft(input_block)
         self.assertEqual(10, np.size(result))

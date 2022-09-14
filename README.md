@@ -26,8 +26,8 @@ For development versions and alternative installations see the [installation doc
 
 ## Usage
 
-* [Get Started](https://hofbi.github.io/vibromaf/get-started/)
-* [Full Documentation](https://hofbi.github.io/vibromaf/)
+- [Get Started](https://hofbi.github.io/vibromaf/get-started/)
+- [Full Documentation](https://hofbi.github.io/vibromaf/)
 
 ## Citation
 
