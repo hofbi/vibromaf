@@ -4,6 +4,12 @@ ci:
   autoupdate_commit_msg: 'chore(deps): pre-commit.ci autoupdate'
   autoupdate_schedule: monthly
   autofix_commit_msg: 'style: pre-commit.ci fixes'
+  skip:
+    - flake8-nb
+    - nbqa-pyupgrade
+    - nbqa-isort
+    - nbqa-pylint
+    - nbqa
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -67,16 +73,16 @@ repos:
       - id: isort
         args: [--profile, black, --multi-line, '3']
   - repo: https://github.com/PyCQA/pylint
-    rev: v2.15.0
+    rev: v2.15.3
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
-    rev: v2.37.3
+    rev: v3.0.0
     hooks:
       - id: pyupgrade
         args: [--py37-plus]
   - repo: https://github.com/PyCQA/autoflake
-    rev: v1.5.3
+    rev: v1.6.1
     hooks:
       - id: autoflake
   - repo: https://github.com/asottile/yesqa
@@ -88,7 +94,7 @@ repos:
     hooks:
       - id: shellcheck
   - repo: https://github.com/kynan/nbstripout
-    rev: 0.6.0
+    rev: 0.6.1
     hooks:
       - id: nbstripout
   - repo: https://github.com/s-weigand/flake8-nb
@@ -102,8 +108,23 @@ repos:
           - flake8-use-pathlib
           - flake8-bugbear
           - flake8-comprehensions
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.5.1
+    hooks:
+      - id: nbqa-pyupgrade
+        args:
+          - --py38-plus
+      - id: nbqa-isort
+        args: [--profile=black]
+      - id: nbqa-pylint
+        args: [--rcfile=.pylintrc-nb.ini]
+      - id: nbqa
+        entry: nbqa autoflake -i
+        name: nbqa-autoflake
+        alias: nbqa-autoflake
+        additional_dependencies: [autoflake]
   - repo: https://github.com/crate-ci/typos
-    rev: v1.12.4
+    rev: v1.12.8
     hooks:
       - id: typos
         exclude_types:
