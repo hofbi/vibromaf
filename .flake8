@@ -1,13 +1,19 @@
 [flake8]
 max-line-length = 120
 
-extend-ignore = E203  # Ignore "whitespace before ':'" because it conflicts with black
-                W503  # Ignore "line break before binary operator" because it conflicts with black
+extend-ignore =
+    # E203: Ignore "whitespace before ':'" because it conflicts with black
+    E203,
+    # W503: Ignore "line break before binary operator" because it conflicts with black
+    W503
 
 # Flake8 config for Jupyter notebooks
 [flake8_nb]
 max-line-length = 120
 
-extend-ignore = E203  # Ignore "whitespace before ':'" because it conflicts with black
-                W503  # Ignore "line break before binary operator" because it conflicts with black
-                E402
+extend-ignore =
+    # E203: Ignore "whitespace before ':'" because it conflicts with black
+    E203,
+    # W503: Ignore "line break before binary operator" because it conflicts with black
+    W503,
+    E402
