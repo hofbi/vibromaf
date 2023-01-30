@@ -70,7 +70,7 @@ def reshape_per_compression_rate(
 class MatSignalLoader:
     """Helper class to load test signals from mat files."""
 
-    def __init__(self, metric: str, codec: str = "VCPWQ"):
+    def __init__(self, metric: str, codec: str = "VCPWQ") -> None:
         self.__reference = load_signal_from_mat(
             config.DATA_PATH / "Signals.mat", "Signals"
         )

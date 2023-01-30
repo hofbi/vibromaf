@@ -9,6 +9,9 @@ source venv/bin/activate
 
 # Install dependencies
 pip3 install -r requirements-dev.txt
+
+# Install vibromaf as development (editable) package
+pip3 install -e .
 ```
 
 ## Development
@@ -18,7 +21,7 @@ We use [pre-commit](https://pre-commit.com/) to manage our git pre-commit hooks.
 To set it up, call
 
 ```sh
-git config --unset-all core.hooksPath  # may fail if you don't have any hooks set, but that's ok
+git config --unset-all core.hooksPath # may fail if you don't have any hooks set, but that's ok
 pre-commit install --overwrite
 ```
 

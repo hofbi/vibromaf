@@ -3,3 +3,50 @@
 # https://pip.pypa.io/en/stable/reference/pip/#pep-517-and-518-support
 requires = ["setuptools>=43.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+# TODO test "ANN", "EM", "TRY"
+select = [
+    "B",
+    "BLE",
+    "C",
+    "C4",
+    "C90",
+    "DTZ",
+    "E",
+    "ERA",
+    "EXE",
+    "F",
+    "G",
+    "ICN",
+    "ISC",
+    "N",
+    "PGH",
+    "PIE",
+    "PL",
+    "PTH",
+    "Q",
+    "RET",
+    "RUF",
+    "S",
+    "SIM",
+    "T10",
+    "UP",
+    "W",
+    "YTT"
+]
+ignore = []
+
+line-length = 120
+
+target-version = "py37"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.docformatter]
+in-place = true
+recursive = true
+wrap-summaries = 88
+wrap-descriptions = 81

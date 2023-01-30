@@ -69,5 +69,5 @@ class STSIM:
         )
 
     def __post_init__(self):
-        if not 0.0 < self.eta < 1.0:
+        if not 0.0 < self.eta < 1.0:  # noqa: PLR2004
             raise ValueError("Eta must be between 0 and 1.")

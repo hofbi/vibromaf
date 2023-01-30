@@ -22,6 +22,7 @@ repos:
         exclude: ^matlab/
       - id: check-shebang-scripts-are-executable
       - id: check-symlinks
+      - id: check-toml
       - id: check-yaml
       - id: debug-statements
       - id: destroyed-symlinks
@@ -37,12 +38,25 @@ repos:
         additional_dependencies:
           - mdformat-gfm
           - mdformat-black
+          - mdformat-shfmt
+          - mdformat-config
+          - mdformat-toc
+  - repo: https://github.com/tcort/markdown-link-check
+    rev: v3.10.3
+    hooks:
+      - id: markdown-link-check
+        args: ["--quiet", "--config", ".md-link-config.json"]
   - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
     rev: 0.2.2
     hooks:
       - id: yamlfmt
-        args: [--mapping, '2', --sequence, '4', --offset, '2', --implicit_start]
+        args: [--mapping=2, --sequence=4, --offset=2, --implicit_start, --preserve-quotes]
         exclude: ^.gitlab-ci.yml$
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.29.0
+    hooks:
+      - id: yamllint
+        args: [--strict]
   - repo: https://github.com/psf/black
     rev: 22.12.0
     hooks:
@@ -51,14 +65,28 @@ repos:
       - id: black-jupyter
         language_version: python3
   - repo: https://github.com/asottile/blacken-docs
-    rev: v1.12.1
+    rev: 1.13.0
     hooks:
       - id: blacken-docs
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.5.1
+    rev: v1.6.0.rc1
     hooks:
       - id: docformatter
-        args: [--in-place, --wrap-summaries, '88', --wrap-descriptions, '81']
+        additional_dependencies: [tomli]
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.237
+    hooks:
+      - id: ruff
+        args: [--fix]
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-check-blanket-type-ignore
+      - id: python-check-mock-methods
+      - id: python-no-eval
+      - id: python-no-log-warn
+      - id: python-use-type-annotations
   - repo: https://github.com/PyCQA/flake8
     rev: 6.0.0
     hooks:
@@ -69,12 +97,11 @@ repos:
           - flake8-builtins
           - flake8-comprehensions
   - repo: https://github.com/PyCQA/isort
-    rev: 5.11.4
+    rev: 5.12.0
     hooks:
       - id: isort
-        args: [--profile, black, --multi-line, '3']
   - repo: https://github.com/PyCQA/pylint
-    rev: v2.15.9
+    rev: v2.16.0b1
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
@@ -86,10 +113,6 @@ repos:
     rev: v2.0.0
     hooks:
       - id: autoflake
-  - repo: https://github.com/asottile/yesqa
-    rev: v1.4.0
-    hooks:
-      - id: yesqa
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.9.0.2
     hooks:
@@ -110,11 +133,11 @@ repos:
           - flake8-bugbear
           - flake8-comprehensions
   - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.6.0
+    rev: 1.6.1
     hooks:
       - id: nbqa-pyupgrade
         args:
-          - --py38-plus
+          - --py37-plus
       - id: nbqa-isort
         args: [--profile=black]
       - id: nbqa-pylint
@@ -124,8 +147,12 @@ repos:
         name: nbqa-autoflake
         alias: nbqa-autoflake
         additional_dependencies: [autoflake]
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.21.0
+    hooks:
+      - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: v1.13.6
+    rev: typos-dict-v0.9.15
     hooks:
       - id: typos
         exclude_types:

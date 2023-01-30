@@ -34,10 +34,9 @@ def compute_block_dft(block: np.array) -> np.array:
         2 * block_length,
     )
     extended_block[0:block_length] = block
-    spectrum = mag2db(abs(1 / math.sqrt(block_length) * np.fft.fft(extended_block)))[
+    return mag2db(abs(1 / math.sqrt(block_length) * np.fft.fft(extended_block)))[
         0:block_length
     ]
-    return spectrum
 
 
 def compute_block_dct(block: np.array) -> np.array:

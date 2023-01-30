@@ -1,23 +1,12 @@
 """Example to evaluate WAV files."""
 
-import sys
 from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser, FileType
-from pathlib import Path
 
 from scipy.io import wavfile
 
-# This is to make the local vibromaf package available
-try:
-    sys.path.append(str(Path(__file__).absolute().parents[1]))
-except IndexError:
-    pass
-
-# pylint: disable=wrong-import-position
 from vibromaf.metrics.snr import snr
 from vibromaf.metrics.spqi import spqi
 from vibromaf.metrics.stsim import st_sim
-
-# pylint: enable=wrong-import-position
 
 
 def parse_arguments():
