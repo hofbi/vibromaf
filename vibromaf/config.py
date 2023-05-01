@@ -1,4 +1,4 @@
-"""vibromaf config."""
+"""Vibromaf config."""
 
 from pathlib import Path
 
