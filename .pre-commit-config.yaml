@@ -42,23 +42,23 @@ repos:
           - mdformat-config
           - mdformat-toc
   - repo: https://github.com/tcort/markdown-link-check
-    rev: v3.10.3
+    rev: v3.11.2
     hooks:
       - id: markdown-link-check
         args: ["--quiet", "--config", ".md-link-config.json"]
   - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-    rev: 0.2.2
+    rev: 0.2.3
     hooks:
       - id: yamlfmt
         args: [--mapping=2, --sequence=4, --offset=2, --implicit_start, --preserve-quotes]
         exclude: ^.gitlab-ci.yml$
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.29.0
+    rev: v1.32.0
     hooks:
       - id: yamllint
         args: [--strict]
   - repo: https://github.com/psf/black
-    rev: 23.1.0
+    rev: 23.3.0
     hooks:
       - id: black
         language_version: python3
@@ -69,12 +69,12 @@ repos:
     hooks:
       - id: blacken-docs
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.6.0.rc1
+    rev: v1.7.1
     hooks:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.0.241
+    rev: v0.0.270
     hooks:
       - id: ruff
         args: [--fix]
@@ -101,20 +101,20 @@ repos:
     hooks:
       - id: isort
   - repo: https://github.com/PyCQA/pylint
-    rev: v2.16.1
+    rev: v3.0.0a6
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
+    rev: v3.4.0
     hooks:
       - id: pyupgrade
         args: [--py37-plus]
   - repo: https://github.com/PyCQA/autoflake
-    rev: v2.0.1
+    rev: v2.1.1
     hooks:
       - id: autoflake
   - repo: https://github.com/shellcheck-py/shellcheck-py
-    rev: v0.9.0.2
+    rev: v0.9.0.5
     hooks:
       - id: shellcheck
   - repo: https://github.com/kynan/nbstripout
@@ -122,7 +122,7 @@ repos:
     hooks:
       - id: nbstripout
   - repo: https://github.com/s-weigand/flake8-nb
-    rev: v0.5.2
+    rev: v0.5.3
     hooks:
       - id: flake8-nb
         args:
@@ -133,7 +133,7 @@ repos:
           - flake8-bugbear
           - flake8-comprehensions
   - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.6.1
+    rev: 1.7.0
     hooks:
       - id: nbqa-pyupgrade
         args:
@@ -148,11 +148,11 @@ repos:
         alias: nbqa-autoflake
         additional_dependencies: [autoflake]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.21.0
+    rev: 0.23.1
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: typos-dict-v0.9.16
+    rev: v1.14.12
     hooks:
       - id: typos
         exclude_types:
