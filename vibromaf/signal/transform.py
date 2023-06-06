@@ -2,7 +2,7 @@
 
 import math
 import warnings
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Callable
 
 import numpy as np
@@ -18,11 +18,12 @@ def preprocess_input_signal(distorted: np.array, reference: np.array) -> np.arra
         warnings.warn(
             f"Truncating distorted signal {distorted.shape} since longer than reference signal {reference.shape}.",
             RuntimeWarning,
+            stacklevel=2,
         )
         return np.resize(distorted, reference.shape)
     if distorted.size < reference.size:
         raise ValueError(
-            f"Distorted signal {distorted.shape} must not be shorter than reference signal {reference.shape}!"
+            f"Distorted signal {distorted.shape} must not be shorter than reference signal {reference.shape}!",
         )
     return distorted
 
@@ -82,8 +83,10 @@ class BlockBuilder:
 class PerceptualSpectrumBuilder:
     """Calculate perceptual spectrum."""
 
-    block_builder: BlockBuilder = BlockBuilder(512)
-    perceptual_threshold: PerceptualThreshold = PerceptualThreshold(8000)
+    block_builder: BlockBuilder = field(default_factory=lambda: BlockBuilder(512))
+    perceptual_threshold: PerceptualThreshold = field(
+        default_factory=lambda: PerceptualThreshold(8000)
+    )
     block_transform_strategy: Callable[[np.array], np.array] = compute_block_dct
 
     def compute_perceptual_spectrum(self, signal: np.array) -> np.array:

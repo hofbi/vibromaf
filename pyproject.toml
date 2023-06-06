@@ -4,49 +4,70 @@
 requires = ["setuptools>=43.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.ruff]
-# TODO test "ANN", "EM", "TRY"
-select = [
-    "B",
-    "BLE",
-    "C",
-    "C4",
-    "C90",
-    "DTZ",
-    "E",
-    "ERA",
-    "EXE",
-    "F",
-    "G",
-    "ICN",
-    "ISC",
-    "N",
-    "PGH",
-    "PIE",
-    "PL",
-    "PTH",
-    "Q",
-    "RET",
-    "RUF",
-    "S",
-    "SIM",
-    "T10",
-    "UP",
-    "W",
-    "YTT"
-]
-ignore = []
-
-line-length = 120
-
-target-version = "py37"
-
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-
 [tool.docformatter]
 in-place = true
 recursive = true
 wrap-summaries = 88
 wrap-descriptions = 81
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.pylint.BASIC]
+# Stick to snake case, but accept setUp and tearDown from unittest
+method-rgx = "(([a-z_][a-z0-9_]*)|(setUp)|(tearDown))$"
+
+[tool.pylint.FORMAT]
+max-line-length = 120
+
+[tool.pylint.MASTER]
+# Add files or directories to the blacklist. They should be base names, not paths.
+ignore = ["venv"]
+
+[tool.pylint."MESSAGES CONTROL"]
+# Only show warnings with the listed confidence levels. Leave empty to show
+# all. Valid levels: HIGH, INFERENCE, INFERENCE_FAILURE, UNDEFINED
+confidence = ""
+disable = [
+  "missing-function-docstring",
+  "import-error", # disabled since pre-commit runs pylint in a separate venv
+  "unspecified-encoding",
+  "fixme",
+  "too-few-public-methods"
+]
+
+[tool.ruff]
+# TODO test "ANN", "EM", "TRY"
+select = [
+  "B",
+  "BLE",
+  "C",
+  "C4",
+  "C90",
+  "DTZ",
+  "E",
+  "ERA",
+  "EXE",
+  "F",
+  "G",
+  "ICN",
+  "ISC",
+  "N",
+  "PGH",
+  "PIE",
+  "PL",
+  "PTH",
+  "Q",
+  "RET",
+  "RUF",
+  "S",
+  "SIM",
+  "T10",
+  "UP",
+  "W",
+  "YTT"
+]
+ignore = []
+line-length = 120
+target-version = "py37"
