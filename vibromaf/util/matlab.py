@@ -33,7 +33,7 @@ def load_data_for_metric(
     )
 
     train_indices = [
-        element for element in range(0, vcpwq.shape[1]) if element not in test_indices
+        element for element in range(vcpwq.shape[1]) if element not in test_indices
     ]
 
     return np.concatenate(
