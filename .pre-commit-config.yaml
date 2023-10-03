@@ -76,7 +76,7 @@ repos:
       - id: yamllint
         args: [--strict]
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 23.9.1
     hooks:
       - id: black
         language_version: python3
@@ -92,7 +92,7 @@ repos:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.287
+    rev: v0.0.292
     hooks:
       - id: ruff
         args: [--fix]
@@ -119,11 +119,11 @@ repos:
     hooks:
       - id: isort
   - repo: https://github.com/PyCQA/pylint
-    rev: v3.0.0a7
+    rev: v3.0.0
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.10.1
+    rev: v3.14.0
     hooks:
       - id: pyupgrade
         args: [--py37-plus]
@@ -162,11 +162,11 @@ repos:
         alias: nbqa-autoflake
         additional_dependencies: [autoflake]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.26.3
+    rev: 0.27.0
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: v1.16.10
+    rev: v1.16.17
     hooks:
       - id: typos
         exclude_types:
