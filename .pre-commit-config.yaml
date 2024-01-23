@@ -6,9 +6,7 @@ ci:
   skip:
     - flake8-nb
     - nbqa-pyupgrade
-    - nbqa-isort
     - nbqa-pylint
-    - nbqa
 
 repos:
   - repo: meta
