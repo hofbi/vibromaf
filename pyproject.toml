@@ -10,10 +10,6 @@ recursive = true
 wrap-summaries = 88
 wrap-descriptions = 81
 
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-
 [tool.pylint.BASIC]
 # Stick to snake case, but accept setUp and tearDown from unittest
 method-rgx = "(([a-z_][a-z0-9_]*)|(setUp)|(tearDown))$"
@@ -38,36 +34,31 @@ disable = [
 ]
 
 [tool.ruff]
-# TODO test "ANN", "EM", "TRY"
-select = [
-  "B",
-  "BLE",
-  "C",
-  "C4",
-  "C90",
-  "DTZ",
-  "E",
-  "ERA",
-  "EXE",
-  "F",
-  "G",
-  "ICN",
-  "ISC",
-  "N",
-  "PGH",
-  "PIE",
-  "PL",
-  "PTH",
-  "Q",
-  "RET",
-  "RUF",
+fix = true
+target-version = "py38"
+select = ["ALL"]
+ignore = [
+  "A",
+  "ANN",
+  "ARG",
+  "COM", # Done via formatter
+  "D",
+  "DTZ001", # TODO: Enable
+  "E402", # TODO
+  "E501", # Done via formatter
+  "EM101", # TODO
+  "EM102", # TODO
+  "ERA001", # TODO
+  "FA100", # TODO
+  "FBT",
+  "FIX",
+  "INP",
+  "NPY002", # TODO
+  "PERF203",
+  "PT", # We don't use pytest here
   "S",
-  "SIM",
-  "T10",
-  "UP",
-  "W",
-  "YTT"
+  "SIM105", # TODO
+  "T",
+  "TRY003", # TODO
+  "TD"
 ]
-ignore = []
-line-length = 120
-target-version = "py37"

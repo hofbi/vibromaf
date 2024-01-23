@@ -20,4 +20,4 @@ def save_model(model, model_path: Path) -> None:
 
 def load_model(model_path: Path):
     """Load the model from a file."""
-    return pickle.loads(model_path.read_bytes())  # noqa: S301
+    return pickle.loads(model_path.read_bytes())
