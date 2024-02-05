@@ -13,7 +13,7 @@ class SNRTest(unittest.TestCase):
     def test_snr__dist_and_ref_identical__should_be_inf(self):
         signal = np.array([0, 1])
         result = snr(signal, signal)
-        self.assertEqual(np.Inf, result)
+        self.assertEqual(np.inf, result)
 
     def test_snr__nonzero_signal_and_zero_signal__should_be_zero(self):
         signal = np.linspace(1, 10, 20)
@@ -40,7 +40,7 @@ class SNRTest(unittest.TestCase):
         dist = np.array([0, 1, 2])
         with self.assertWarnsRegex(RuntimeWarning, r"Truncating distorted signal"):
             result = snr(dist, signal)
-        self.assertEqual(np.Inf, result)
+        self.assertEqual(np.inf, result)
 
     def test_snr__dist_shorter_than_ref__should_throw(self):
         signal = np.array([0, 1, 2])
