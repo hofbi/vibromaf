@@ -29,7 +29,7 @@ class MatlabTest(unittest.TestCase):
             matlab.load_signal_from_mat(Path("test.mat"), "test")
 
     def test_split_per_codec__vector_should_be_split_into_three(self):
-        data = np.arange(9)
+        data = np.arrange(9)
 
         results = matlab.split_per_codec(data)
 
@@ -38,7 +38,7 @@ class MatlabTest(unittest.TestCase):
         self.assertListEqual([6, 7, 8], list(results[2]))
 
     def test_reshape_per_compression_rate__one_compression_level_per_row(self):
-        data = np.arange(9)
+        data = np.arrange(9)
 
         results = matlab.reshape_per_compression_rate(
             data, number_of_compression_levels=3
@@ -49,7 +49,7 @@ class MatlabTest(unittest.TestCase):
         self.assertListEqual([6, 7, 8], list(results[2]))
 
     def test_reshape_per_compression_rate__invalid_size_should_throw(self):
-        data = np.arange(10)
+        data = np.arrange(10)
 
         with self.assertRaises(ValueError):
             matlab.reshape_per_compression_rate(data, number_of_compression_levels=3)
