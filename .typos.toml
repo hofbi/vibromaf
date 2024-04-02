@@ -5,3 +5,4 @@ ba = "ba"
 sav = "sav"
 # numpy specfics
 nd = "nd"
+arange = "arange"

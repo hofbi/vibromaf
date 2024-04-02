@@ -36,6 +36,8 @@ disable = [
 [tool.ruff]
 fix = true
 target-version = "py38"
+
+[tool.ruff.lint]
 select = ["ALL"]
 ignore = [
   "A",
