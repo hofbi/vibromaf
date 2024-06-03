@@ -55,7 +55,7 @@ repos:
           - mdformat-config
           - mdformat-toc
   - repo: https://github.com/tcort/markdown-link-check
-    rev: v3.12.1
+    rev: v3.12.2
     hooks:
       - id: markdown-link-check
         args: ["--quiet", "--config", ".md-link-config.json"]
@@ -83,7 +83,7 @@ repos:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.3
+    rev: v0.4.7
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
@@ -97,7 +97,7 @@ repos:
         additional_dependencies:
           - flake8-bugbear  # Not fully implemented by ruff
   - repo: https://github.com/PyCQA/pylint
-    rev: v3.1.0
+    rev: v3.2.2
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
@@ -127,11 +127,11 @@ repos:
       - id: nbqa-pylint
         args: [--rcfile=.pylintrc-nb.ini]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.2
+    rev: 0.28.4
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: v1.21.0
+    rev: v1.22.0
     hooks:
       - id: typos
         exclude_types:
