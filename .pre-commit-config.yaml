@@ -74,7 +74,7 @@ repos:
       - id: yamllint
         args: [--strict]
   - repo: https://github.com/asottile/blacken-docs
-    rev: 1.16.0
+    rev: 1.18.0
     hooks:
       - id: blacken-docs
   - repo: https://github.com/PyCQA/docformatter
@@ -83,7 +83,7 @@ repos:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.4.7
+    rev: v0.5.0
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
@@ -91,17 +91,17 @@ repos:
       - id: ruff-format
         types_or: [python, pyi, jupyter]
   - repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
+    rev: 7.1.0
     hooks:
       - id: flake8
         additional_dependencies:
           - flake8-bugbear  # Not fully implemented by ruff
   - repo: https://github.com/PyCQA/pylint
-    rev: v3.2.2
+    rev: v3.2.4
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.15.2
+    rev: v3.16.0
     hooks:
       - id: pyupgrade
         args: [--py38-plus]
@@ -127,11 +127,11 @@ repos:
       - id: nbqa-pylint
         args: [--rcfile=.pylintrc-nb.ini]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.28.4
+    rev: 0.28.6
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: v1.22.0
+    rev: v1.22.9
     hooks:
       - id: typos
         exclude_types:
