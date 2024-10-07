@@ -1,4 +1,4 @@
-default_stages: [commit]
+default_stages: [Nonepre-commitNone]
 ci:
   autoupdate_commit_msg: 'chore(deps): pre-commit.ci autoupdate'
   autoupdate_schedule: monthly
@@ -26,7 +26,7 @@ repos:
           - python
           - shell
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -83,7 +83,7 @@ repos:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.3
+    rev: v0.6.9
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
@@ -97,7 +97,7 @@ repos:
         additional_dependencies:
           - flake8-bugbear  # Not fully implemented by ruff
   - repo: https://github.com/PyCQA/pylint
-    rev: v3.2.7
+    rev: v3.3.1
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
@@ -127,11 +127,11 @@ repos:
       - id: nbqa-pylint
         args: [--rcfile=.pylintrc-nb.ini]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.29.2
+    rev: 0.29.3
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: typos-dict-v0.11.27
+    rev: v1.26.0
     hooks:
       - id: typos
         exclude_types:
