@@ -13,18 +13,6 @@ repos:
     hooks:
       - id: check-hooks-apply
       - id: check-useless-excludes
-  - repo: local
-    hooks:
-      - id: check-snake-case
-        name: check snake case
-        description: Check that all files are snake_case
-        entry: file names and paths must be snake_case
-        language: fail
-        files: "-|[A-Z]"
-        types_or:
-          - c++
-          - python
-          - shell
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v5.0.0
     hooks:
@@ -44,6 +32,12 @@ repos:
           - --pytest-test-first
       - id: requirements-txt-fixer
       - id: trailing-whitespace
+  - repo: https://github.com/luminartech/dev-tools
+    rev: 0.4.0
+    hooks:
+      - id: check-snake-case
+      - id: check-cpp-and-cu-unit-test-naming-pattern
+      - id: check-non-existing-and-duplicate-excludes
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.18
     hooks:
