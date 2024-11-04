@@ -1,7 +1,6 @@
 """Utility functions for MATLAB files."""
 
 from pathlib import Path
-from typing import List, Tuple
 
 import numpy as np
 from scipy import io
@@ -19,8 +18,8 @@ def load_signal_from_mat(mat_file: Path, signal_name: str) -> np.array:
 
 
 def load_data_for_metric(
-    metric: str, test_indices: List[int]
-) -> Tuple[np.array, np.array]:
+    metric: str, test_indices: list[int]
+) -> tuple[np.array, np.array]:
     """Load and concatenate the training and test data."""
     vcpwq = load_signal_from_mat(
         config.DATA_PATH / f"{metric}_VCPWQ.mat", f"{metric}_VCPWQ"
