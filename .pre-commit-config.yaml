@@ -4,7 +4,7 @@ ci:
   autoupdate_schedule: monthly
   autofix_commit_msg: 'style: pre-commit.ci fixes'
   skip:
-    - flake8-nb
+    - nbqa-ruff
     - nbqa-pyupgrade
     - nbqa-pylint
 
