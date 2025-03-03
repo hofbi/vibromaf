@@ -33,7 +33,7 @@ repos:
       - id: requirements-txt-fixer
       - id: trailing-whitespace
   - repo: https://github.com/luminartech/dev-tools
-    rev: 0.8.0
+    rev: 0.9.0
     hooks:
       - id: check-snake-case
       - id: check-cpp-and-cu-unit-test-naming-pattern
@@ -49,7 +49,7 @@ repos:
           - mdformat-config
           - mdformat-toc
   - repo: https://github.com/tcort/markdown-link-check
-    rev: v3.12.2
+    rev: v3.13.6
     hooks:
       - id: markdown-link-check
         args: ["--quiet", "--config", ".md-link-config.json"]
@@ -73,12 +73,12 @@ repos:
       - id: blacken-docs
   - repo: https://github.com/PyCQA/docformatter
     # Use tag > v1.7.5 if available
-    rev: eb1df347edd128b30cd3368dddc3aa65edcfac38
+    rev: v1.7.5
     hooks:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.4
+    rev: v0.9.9
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
@@ -86,7 +86,7 @@ repos:
       - id: ruff-format
         types_or: [python, pyi, jupyter]
   - repo: https://github.com/PyCQA/flake8
-    rev: 7.1.1
+    rev: 7.1.2
     hooks:
       - id: flake8
         additional_dependencies:
@@ -114,11 +114,11 @@ repos:
       - id: nbqa-pylint
         args: [--rcfile=.pylintrc-nb.ini]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.31.1
+    rev: 0.31.2
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: typos-dict-v0.12.4
+    rev: v1.30.0
     hooks:
       - id: typos
         exclude_types:
