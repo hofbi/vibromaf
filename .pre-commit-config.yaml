@@ -32,8 +32,8 @@ repos:
           - --pytest-test-first
       - id: requirements-txt-fixer
       - id: trailing-whitespace
-  - repo: https://github.com/luminartech/dev-tools
-    rev: 0.13.2
+  - repo: https://github.com/hofbi/dev-tools
+    rev: 0.15.0
     hooks:
       - id: check-snake-case
       - id: check-cpp-and-cu-unit-test-naming-pattern
@@ -73,12 +73,12 @@ repos:
       - id: blacken-docs
   - repo: https://github.com/PyCQA/docformatter
     # Use tag > v1.7.5 if available
-    rev: v1.7.7
+    rev: v1.7.8-rc1
     hooks:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.2
+    rev: v0.12.7
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
@@ -118,7 +118,7 @@ repos:
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: v1
+    rev: v1.35.1
     hooks:
       - id: typos
         exclude_types:
