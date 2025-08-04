@@ -33,7 +33,7 @@ repos:
       - id: requirements-txt-fixer
       - id: trailing-whitespace
   - repo: https://github.com/luminartech/dev-tools
-    rev: 0.13.2
+    rev: 0.14.0
     hooks:
       - id: check-snake-case
       - id: check-cpp-and-cu-unit-test-naming-pattern
@@ -73,12 +73,12 @@ repos:
       - id: blacken-docs
   - repo: https://github.com/PyCQA/docformatter
     # Use tag > v1.7.5 if available
-    rev: v1.7.7
+    rev: v1.7.8-rc1
     hooks:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.2
+    rev: v0.12.7
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
