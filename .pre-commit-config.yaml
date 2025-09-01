@@ -14,7 +14,7 @@ repos:
       - id: check-hooks-apply
       - id: check-useless-excludes
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-added-large-files
       - id: check-case-conflict
@@ -33,7 +33,7 @@ repos:
       - id: requirements-txt-fixer
       - id: trailing-whitespace
   - repo: https://github.com/hofbi/dev-tools
-    rev: 0.15.0
+    rev: 0.15.1
     hooks:
       - id: check-snake-case
       - id: check-cpp-and-cu-unit-test-naming-pattern
@@ -73,12 +73,12 @@ repos:
       - id: blacken-docs
   - repo: https://github.com/PyCQA/docformatter
     # Use tag > v1.7.5 if available
-    rev: v1.7.8-rc1
+    rev: v1.7.7
     hooks:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.7
+    rev: v0.12.11
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
@@ -92,7 +92,7 @@ repos:
         additional_dependencies:
           - flake8-bugbear  # Not fully implemented by ruff
   - repo: https://github.com/PyCQA/pylint
-    rev: v3.3.7
+    rev: v3.3.8
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
@@ -114,11 +114,11 @@ repos:
       - id: nbqa-pylint
         args: [--rcfile=.pylintrc-nb.ini]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.33.2
+    rev: 0.33.3
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: v1.35.1
+    rev: v1
     hooks:
       - id: typos
         exclude_types:
