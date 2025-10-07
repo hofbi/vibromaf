@@ -54,7 +54,7 @@ repos:
       - id: markdown-link-check
         args: ["--quiet", "--config", ".md-link-config.json"]
   - repo: https://github.com/pappasam/toml-sort
-    rev: v0.24.2
+    rev: v0.24.3
     hooks:
       - id: toml-sort-fix
   - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
@@ -68,7 +68,7 @@ repos:
       - id: yamllint
         args: [--strict]
   - repo: https://github.com/asottile/blacken-docs
-    rev: 1.19.1
+    rev: 1.20.0
     hooks:
       - id: blacken-docs
   - repo: https://github.com/PyCQA/docformatter
@@ -77,7 +77,7 @@ repos:
       - id: docformatter
         additional_dependencies: [tomli]
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.11
+    rev: v0.13.3
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
@@ -91,7 +91,7 @@ repos:
         additional_dependencies:
           - flake8-bugbear  # Not fully implemented by ruff
   - repo: https://github.com/PyCQA/pylint
-    rev: v3.3.8
+    rev: v3.3.9
     hooks:
       - id: pylint
   - repo: https://github.com/asottile/pyupgrade
@@ -113,11 +113,11 @@ repos:
       - id: nbqa-pylint
         args: [--rcfile=.pylintrc-nb.ini]
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.33.3
+    rev: 0.34.0
     hooks:
       - id: check-github-workflows
   - repo: https://github.com/crate-ci/typos
-    rev: v1.35.8
+    rev: v1.38.0
     hooks:
       - id: typos
         exclude_types:
