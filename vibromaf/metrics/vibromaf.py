@@ -28,4 +28,5 @@ class VibroMAF:
         signal_to_noise_ratio = nsnr(distorted, reference)
         st_sim = self.__st_sim.calculate(distorted, reference)
         spqi = self.__spqi.calculate(distorted, reference)
-        return float(self.__model.predict([[signal_to_noise_ratio, st_sim, spqi]]))
+        prediction = self.__model.predict([[signal_to_noise_ratio, st_sim, spqi]])
+        return float(np.asarray(prediction).squeeze().item())
