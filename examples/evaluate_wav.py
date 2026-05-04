@@ -1,6 +1,7 @@
 """Example to evaluate WAV files."""
 
-from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser, FileType
+from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
+from pathlib import Path
 
 from scipy.io import wavfile
 
@@ -17,12 +18,12 @@ def parse_arguments():
     )
     parser.add_argument(
         "distorted",
-        type=FileType("r"),
+        type=Path,
         help="Distorted .wav file",
     )
     parser.add_argument(
         "reference",
-        type=FileType("r"),
+        type=Path,
         help="Undistorted reference .wav file",
     )
     return parser.parse_args()
@@ -32,8 +33,8 @@ def main():
     """main."""
     args = parse_arguments()
 
-    distorted_signal = wavfile.read(args.distorted.name)[1]
-    reference_signal = wavfile.read(args.reference.name)[1]
+    distorted_signal = wavfile.read(args.distorted)[1]
+    reference_signal = wavfile.read(args.reference)[1]
 
     # Calculate metric scores
     snr_score = snr(distorted_signal, reference_signal)
