@@ -33,7 +33,7 @@ repos:
       - id: requirements-txt-fixer
       - id: trailing-whitespace
   - repo: https://github.com/hofbi/dev-tools
-    rev: pre-commit-excludes-0.2.0
+    rev: 1.12.1
     hooks:
       - id: check-snake-case
       - id: check-cpp-and-cu-unit-test-naming-pattern
